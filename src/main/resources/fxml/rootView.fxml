@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <MenuBar prefWidth="600.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="Файл">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Выход" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <AnchorPane id="anchorPaneOrdersList" fx:id="anchorPaneOrdersList" layoutY="25.0" prefHeight="525.0" prefWidth="200.0" />
+      <AnchorPane id="anchorPaneMessagesList" fx:id="anchorPaneMessagesList" layoutX="200.0" layoutY="25.0" prefHeight="425.0" prefWidth="400.0" />
+      <AnchorPane id="anchorPaneCreateMessage" layoutX="200.0" layoutY="450.0" prefHeight="100.0" prefWidth="400.0" />
+    </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" />
+   </padding>
+</Pane>
