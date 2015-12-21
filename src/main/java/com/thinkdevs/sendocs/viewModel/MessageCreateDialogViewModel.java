@@ -56,7 +56,7 @@ public class MessageCreateDialogViewModel implements Initializable {
             String subject = tfSubjectMsg.getText();
             String text = taTextMsg.getText();
 
-            FileSender fileSender = new FileSender(URL_FROM, URL_TO);
+            FileSender fileSender = new FileSender(URL_TO);
             fileSender.send(files.get());
             MessageModel message = new MessageModel(subject, text, files);
             OrdersListModel.getInstance().getSelectedOrder().addMessage(message);
@@ -77,7 +77,7 @@ public class MessageCreateDialogViewModel implements Initializable {
         lvFilesMsg.setItems(files);
         List<File> fileList = fileChooser.showOpenMultipleDialog(stage);
             for (File file : fileList) {
-                files.add(file.getName());
+                files.add(file.getAbsolutePath());
             }
         });
 
