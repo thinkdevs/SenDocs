@@ -2,6 +2,7 @@ package com.thinkdevs.sendocs.model;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
@@ -14,7 +15,7 @@ public class OrderModel {
 
     public OrderModel(int orderNumber) {
         this.orderNumber = new SimpleIntegerProperty(orderNumber);
-        this.messages = new SimpleListProperty<>();
+        this.messages = new SimpleListProperty<>(FXCollections.observableArrayList());
     }
 
     public int getOrderNumber() {

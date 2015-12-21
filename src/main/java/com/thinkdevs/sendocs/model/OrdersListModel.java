@@ -5,7 +5,6 @@ import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,7 +30,7 @@ public class OrdersListModel {
         for(int number : ordersNumbers) {
             OrderModel orderModel = new OrderModel(number);
             MessageModel messageModel = new MessageModel("Схема " + number, "Новая");
-            messageModel.addLink("Схема.jpg");
+            messageModel.addLink(number + "_Схема.jpg");
             orderModel.addMessage(messageModel);
             ordersList.add(orderModel);
         }
@@ -66,5 +65,13 @@ public class OrdersListModel {
     public void setSelectedOrder(OrderModel selectedOrderModel, int indSelectedOrder) {
         this.indSelectedOrder = indSelectedOrder;
         this.selectedOrder.set(selectedOrderModel);
+    }
+
+    public OrderModel getSelectedOrder() {
+        return selectedOrder.get();
+    }
+
+    public SimpleObjectProperty<OrderModel> selectedOrderProperty() {
+        return selectedOrder;
     }
 }

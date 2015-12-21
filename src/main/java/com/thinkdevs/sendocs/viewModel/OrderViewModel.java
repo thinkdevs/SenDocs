@@ -3,10 +3,13 @@ package com.thinkdevs.sendocs.viewModel;
 import com.thinkdevs.sendocs.model.MessageModel;
 import com.thinkdevs.sendocs.model.OrdersListModel;
 import com.thinkdevs.sendocs.model.OrderModel;
+import com.thinkdevs.sendocs.service.ViewCreatingService;
 import com.thinkdevs.sendocs.view.MessageListCellView;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -23,6 +26,8 @@ public class OrderViewModel implements Initializable {
     private Label lOrderNumber;
     @FXML
     private ListView<MessageModel> lvMessages;
+    @FXML
+    private Button btnCreateMsg;
 
     private OrderModel orderModel;
     private SimpleObjectProperty<OrderModel> orderProperty;
@@ -36,6 +41,9 @@ public class OrderViewModel implements Initializable {
         orderProperty.addListener((observable, oldValue, newValue) -> {
             this.orderModel = newValue;
             lOrderNumber.setText(String.valueOf(orderModel.getOrderNumber()));
+            lvMessages.setItems(orderModel.getMessages());
+            lvMessages.refresh();
+
         });
 
         lvMessages.setCellFactory(new Callback<ListView<MessageModel>, ListCell<MessageModel>>() {
@@ -43,6 +51,10 @@ public class OrderViewModel implements Initializable {
             public ListCell<MessageModel> call(ListView<MessageModel> param) {
                 return new MessageListCellView();
             }
+        });
+
+        btnCreateMsg.setOnAction(event -> {
+            ViewCreatingService.getInstance().showMessageCreateDialog();
         });
     }
 }

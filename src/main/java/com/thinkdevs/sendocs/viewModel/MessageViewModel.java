@@ -1,6 +1,8 @@
 package com.thinkdevs.sendocs.viewModel;
 
+import com.thinkdevs.sendocs.Settings;
 import com.thinkdevs.sendocs.model.MessageModel;
+import com.thinkdevs.sendocs.model.OrdersListModel;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -27,6 +29,8 @@ public class MessageViewModel implements Initializable {
     @FXML
     private AnchorPane apMsg;
     @FXML
+    private Label lAuthorMsg;
+    @FXML
     private Label lSubjectMsg;
     @FXML
     private Label lDateMsg;
@@ -50,6 +54,7 @@ public class MessageViewModel implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        lAuthorMsg.setText(System.getProperty("user.name"));
         lSubjectMsg.setText(message.getSubject());
         lDateMsg.setText(message.getDate());
         ObservableList<Node> lines = tfDesctiptionMsg.getChildren();
@@ -57,19 +62,21 @@ public class MessageViewModel implements Initializable {
         List<String> links = message.getLinks();
         if(null != links && links.size() != 0) {
             int i = 1;
-            lines.add(new Text("\n Cсылки: \n"));
+            lines.add(new Text("\n Файлы: \n"));
             for (String link : links){
                 lines.add(new Text( i + ") "));
                 Hyperlink hyperlink = new Hyperlink(link);
                 hyperlink.setOnAction(event -> {
                     try {
-                        Runtime.getRuntime().exec("explorer.exe /select," + "");
+                        Runtime.getRuntime().exec("explorer.exe "
+                                + Settings.ORDERS_REPOSITORY + OrdersListModel.getInstance().getSelectedOrder().getOrderNumber()
+                                + "\\" + Settings.RZIA_FOLDER);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 });
                 lines.add(hyperlink);
-                lines.add(new Text(";"));
+                lines.add(new Text("; \n"));
                 i++;
             }
         }

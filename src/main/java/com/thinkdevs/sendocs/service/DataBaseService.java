@@ -1,5 +1,7 @@
 package com.thinkdevs.sendocs.service;
 
+import com.thinkdevs.sendocs.Settings;
+
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
@@ -16,7 +18,7 @@ import java.util.List;
  */
 public class DataBaseService {
 
-    private static String repositoryOrders = "\\\\192.168.0.6\\KDProduction\\";
+    private static String repositoryOrders = Settings.ORDERS_REPOSITORY;
     private static Path path = Paths.get(repositoryOrders);
 
     private static List<String> getOrdersList(Path path) {

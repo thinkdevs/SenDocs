@@ -14,6 +14,10 @@ public class MessageListCellView extends ListCell<MessageModel> {
     @Override
     protected void updateItem(MessageModel message, boolean empty) {
         super.updateItem(message, empty);
+        if(empty){
+            setText(null);
+            setGraphic(null);
+        }
         if (message != null) {
             MessageViewModel messageView = new MessageViewModel(message);
             this.setPadding(new Insets(5));

@@ -1,9 +1,6 @@
 package com.thinkdevs.sendocs.model;
 
-import javafx.beans.property.SimpleListProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,7 +18,9 @@ public class MessageModel {
     public MessageModel(String subject, String text) {
         this.subject = subject;
         this.text = text;
-        this.date = new Date().toString();
+        Date createDate = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMM yyyy hh:mm");
+        this.date = simpleDateFormat.format(createDate);
     }
 
     public MessageModel(String subject, String text, List<String> links) {

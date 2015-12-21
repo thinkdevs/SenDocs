@@ -17,8 +17,7 @@
             </menus>
         </MenuBar>
         <AnchorPane id="anchorPaneOrdersList" fx:id="anchorPaneOrdersList" layoutY="25.0" prefHeight="525.0" prefWidth="200.0" />
-      <AnchorPane id="anchorPaneMessagesList" fx:id="anchorPaneMessagesList" layoutX="200.0" layoutY="25.0" prefHeight="425.0" prefWidth="400.0" />
-      <AnchorPane id="anchorPaneCreateMessage" layoutX="200.0" layoutY="450.0" prefHeight="100.0" prefWidth="400.0" />
+      <AnchorPane id="anchorPaneMessagesList" fx:id="anchorPaneMessagesList" layoutX="200.0" layoutY="25.0" prefHeight="525.0" prefWidth="400.0" />
     </children>
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" />
